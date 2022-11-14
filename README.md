@@ -4,7 +4,8 @@
 
 This code starts from the entry point **server.js** which contains the functions for all the required tasks as stated in the assessment pdf. The functions to run the required tasks is made up of smaller reusable helper functions that helps in achieving certain purposes as explained below.
 
-It all starts with the function *getAndCreateCsv* which is made up of three helper functions as follows:
+It all starts with the function *init* which initializes the process by calling the **getAndCreateCsv** function in intervals which is defined next
+next is the function *getAndCreateCsv* which is made up of three helper functions as follows:
 
 1. **getUserData** which is an async function that fetches users data from the randomData api and returns it
 

@@ -24,20 +24,19 @@ const getAndCreateCsv = async () => {
   csvMaker(editedData, pathToUsersCsv);
 };
 
-// getAndCreateCsv();
-
 createUsersSortedCsv = (sortBy) => {
   const usersData = csvToObject(pathToUsersCsv);
   const usersSortedData = usersData.sort(sortData(sortBy, false));
   // delete file if it exists
-  if (fs.existsSync(pathToFile)) {
+  if (fs.existsSync(pathToSortedUsersCsv)) {
     fs.unlinkSync(pathToSortedUsersCsv);
   }
   usersSortedData.forEach((userData) =>
     csvMaker(userData, pathToSortedUsersCsv)
   );
 };
-// createUsersSortedCsv();
+
+// createUsersSortedCsv("FirstName");
 
 const getUserByIdOrUsername = (param, value) => {
   const usersData = csvToObject(pathToUsersCsv);
@@ -47,7 +46,17 @@ const getUserByIdOrUsername = (param, value) => {
   if (user) return user;
   return `no user with the ${param} of ${value}`;
 };
-// getUserByIdOrUsername("FirstName", "young");
+// getUserByIdOrUsername("FirstName", "Donnetta");
+
+
+
+const init = () => {
+  setInterval(() => {
+    getAndCreateCsv();
+  }, 1000);
+};
+
+// init();
 
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
